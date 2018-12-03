@@ -509,7 +509,7 @@ extern class WebGL {
         //until these externs are wrapped (the main issue with putting them in the extern cpp file is
         //included types (i.e snow.api.buffers.ArrayBufferView) being in there.
     @:native(';')
-    static var force_include;
+    static var force_include:Bool;
 
 //Defines
 
