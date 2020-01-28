@@ -54,7 +54,7 @@ class Main {
 
         write_file();
 
-    } //main
+    }
 
     static function tb(c:Int) return ''.rpad(' ', c);
 
@@ -518,7 +518,7 @@ class Main {
         trace('defines - done: $dcount   total: $dcount');
         trace('functions - done: $ncount  todo: $hcount  total: ${ncount+hcount}');
 
-    } //write_file
+    }
 
     static function collect_versions() {
 
@@ -537,7 +537,7 @@ class Main {
         if(log_versions)
         for( n in glew.version_names ) trace('Found GL $n');
 
-    } //collect_versions
+    }
 
     static function collect_exts() {
 
@@ -560,7 +560,7 @@ class Main {
         if(log_ext)
         for( n in glew.ext_names ) trace('Found GL ext $n');
     
-    } //collect_exts
+    }
 
     static function find_defines<T>(_r:EReg, _s:String, _into:Array<T>, _info:String, _log_defines:Bool=true) {
         if(_log_defines) trace('parsing defines for $_info');
@@ -584,7 +584,7 @@ class Main {
             find_defines(r, e.content, e.defines, 'ext ${e.name}', log_defines);
         } //each ext
         
-    } //collect_defines
+    }
 
     static function split_args(_arg_str:String) : Array<GLFunctionArg> {
         var args = [];
@@ -662,7 +662,7 @@ class Main {
             find_functions(r, e.content, e.functions, 'ext ${e.name}', log_functions);
         } //each ext
 
-    } //collect_functions
+    }
 
 
 } //Main

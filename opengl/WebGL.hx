@@ -952,7 +952,7 @@ extern class WebGL {
 
 
 
-} //WebGL
+}
 
 
 typedef GLActiveInfo = {
@@ -961,7 +961,7 @@ typedef GLActiveInfo = {
     type : Int,
     name : String
 
-} //GLActiveInfo
+}
 
 
 typedef GLShaderPrecisionFormat = {
@@ -970,7 +970,7 @@ typedef GLShaderPrecisionFormat = {
     rangeMax : Int,
     precision : Int,
 
-} //GLShaderPrecisionFormat
+}
 
 typedef GLContextAttributes = {
 
@@ -981,7 +981,7 @@ typedef GLContextAttributes = {
     premultipliedAlpha:Bool,
     preserveDrawingBuffer:Bool
 
-} //WebGLContextAttributes
+}
 
 
 abstract GLObject(Int) {
@@ -996,7 +996,7 @@ abstract GLObject(Int) {
     inline function get_invalidated() : Bool return this == 0;
     inline function set_invalidated(value:Bool) : Bool { this = 0; return value; }
 
-} //GLObject
+}
 
 /*class GLObject {
 
