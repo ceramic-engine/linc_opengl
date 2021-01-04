@@ -1,8 +1,15 @@
 package opengl;
 
+#if clay
+import clay.buffers.ArrayBufferView;
+import clay.buffers.Float32Array;
+import clay.buffers.Int32Array;
+#elseif snow
 import snow.api.buffers.ArrayBufferView;
 import snow.api.buffers.Float32Array;
 import snow.api.buffers.Int32Array;
+#end
+
 import opengl.GL;
 
 typedef GLenum = Int
