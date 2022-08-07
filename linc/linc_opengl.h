@@ -5,12 +5,18 @@
 #endif
 #include <haxe/io/Bytes.h>
 
-#if defined(HX_ANDROID)
+#if LINC_OPENGL_GLES2 && !LINC_OPENGL_GLES3 && defined(HX_ANDROID)
     #include <GLES2/gl2.h>
     #include <GLES2/gl2ext.h>
-#elif defined(IPHONE) || defined(__IPHONEOS__) || defined(APPLETVOS) || defined(APPLETVSIM)
+#elif LINC_OPENGL_GLES2 && !LINC_OPENGL_GLES3 && (defined(IPHONE) || defined(__IPHONEOS__) || defined(APPLETVOS) || defined(APPLETVSIM))
     #include <OpenGLES/ES2/gl.h>
     #include <OpenGLES/ES2/glext.h>
+#elif defined(HX_ANDROID)
+    #include <GLES3/gl3.h>
+    #include <GLES3/gl3ext.h>
+#elif defined(IPHONE) || defined(__IPHONEOS__) || defined(APPLETVOS) || defined(APPLETVSIM)
+    #include <OpenGLES/ES3/gl.h>
+    #include <OpenGLES/ES3/glext.h>
 #else
     #include "../lib/glew/include/GL/glew.h"
 #endif

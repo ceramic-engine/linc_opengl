@@ -1580,7 +1580,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetPointerv')
         // static function glGetPointerv(pname:Int, params:void**) : Void;
 
@@ -2205,10 +2205,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetBufferPointerv')
         // static function glGetBufferPointerv(target:Int, pname:Int, params:void**) : Void;
-            
+
         // @:native('glMapBuffer')
         // static function glMapBuffer(target:Int, access:Int) : void*;
 
@@ -2577,16 +2577,16 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetActiveAttrib(program:Int, index:Int, maxLength:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:String) : Void
         // { untyped __cpp__("glGetActiveAttrib({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLint*)&({4}[0]), {5}, {6})", program, index, maxLength, length, size, type, name); }
-            
+
         // inline static function glGetActiveUniform(program:Int, index:Int, maxLength:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:String) : Void
         // { untyped __cpp__("glGetActiveUniform({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLint*)&({4}[0]), {5}, {6})", program, index, maxLength, length, size, type, name); }
-            
+
         // @:native('glGetVertexAttribPointerv')
         // static function glGetVertexAttribPointerv(index:Int, pname:Int, pointer:void**) : Void;
-            
+
         // inline static function glShaderSource(shader:Int, count:Int, string:const GLchar *const*, length:Array<Int>) : Void
         // { untyped __cpp__("glShaderSource({0}, {1}, {2}, (const GLint*)&({3}[0]))", shader, count, string, length); }
 
@@ -2919,13 +2919,13 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetTransformFeedbackVarying')
         // static function glGetTransformFeedbackVarying(program:Int, index:Int, bufSize:Int, length:GLsizei *, size:GLsizei *, type:GLenum *, name:GLchar *) : Void;
-            
+
         // @:native('glTransformFeedbackVaryings')
         // static function glTransformFeedbackVaryings(program:Int, count:Int, varyings:const GLchar *const*, bufferMode:Int) : Void;
-            
+
         // @:native('glVertexAttribIPointer')
         // static function glVertexAttribIPointer(index:Int, size:Int, type:Int, stride:Int, void*pointer:const) : Void;
 
@@ -3026,10 +3026,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetBufferParameteri64v')
         // static function glGetBufferParameteri64v(target:Int, value:Int, data:GLint64 *) : Void;
-            
+
         // @:native('glGetInteger64i_v')
         // static function glGetInteger64i_v(pname:Int, index:Int, data:GLint64 *) : Void;
 
@@ -3220,10 +3220,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glDebugMessageCallbackAMD(callback:GLDEBUGPROCAMD, userParam:BytesData) : Void
         // { untyped __cpp__("glDebugMessageCallbackAMD({0}, (void*)&({1}[0]))", callback, userParam); }
-            
+
         // inline static function glGetDebugMessageLogAMD(count:Int, bufsize:Int, categories:GLenum*, severities:Array<Int>, ids:Array<Int>, lengths:Array<Int>, message:String) : Int
         // { return untyped __cpp__("glGetDebugMessageLogAMD({0}, {1}, {2}, (GLuint*)&({3}[0]), (GLuint*)&({4}[0]), (GLsizei*)&({5}[0]), {6})", count, bufsize, categories, severities, ids, lengths, message); }
 
@@ -3661,11 +3661,8 @@ extern class GL {
 
     // GL_ANGLE_framebuffer_multisample functions
 
-        @:native('glRenderbufferStorageMultisampleANGLE')
-        static function glRenderbufferStorageMultisampleANGLE(target:Int, samples:Int, internalformat:Int, width:Int, height:Int) : Void;
-
-
-
+    @:native('glRenderbufferStorageMultisampleANGLE')
+    static function glRenderbufferStorageMultisampleANGLE(target:Int, samples:Int, internalformat:Int, width:Int, height:Int) : Void;
 
 
 //GL_ANGLE_instanced_arrays
@@ -3813,6 +3810,16 @@ extern class GL {
         inline static function glGetTranslatedShaderSourceANGLE(shader:Int, bufsize:Int, length:Array<Int>, source:String) : Void
           { untyped __cpp__("glGetTranslatedShaderSourceANGLE({0}, {1}, (GLsizei*)&({2}[0]), {3})", shader, bufsize, length, source); }
 
+
+
+//GL_APPLE_multisample functions
+
+#if ios
+
+    @:native('glRenderbufferStorageMultisampleAPPLE')
+    static function glRenderbufferStorageMultisampleAPPLE(target:Int, samples:Int, internalformat:Int, width:Int, height:Int) : Void;
+
+#end
 
 
 
@@ -4041,7 +4048,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetTexParameterPointervAPPLE(target:Int, pname:Int, *params:BytesData) : Void
         // { untyped __cpp__("glGetTexParameterPointervAPPLE({0}, {1}, (void*)&({2}[0]))", target, pname, *params); }
 
@@ -4419,7 +4426,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glCreateSyncFromCLeventARB')
         // static function glCreateSyncFromCLeventARB(context:cl_context, event:cl_event, flags:Int) : GLSync;
 
@@ -4710,10 +4717,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glDebugMessageCallbackARB(callback:GLDEBUGPROCARB, userParam:BytesData) : Void
         // { untyped __cpp__("glDebugMessageCallbackARB({0}, (const void*)&({1}[0]))", callback, userParam); }
-            
+
         // inline static function glGetDebugMessageLogARB(count:Int, bufSize:Int, sources:GLenum*, types:GLenum*, ids:Array<Int>, severities:GLenum*, lengths:Array<Int>, messageLog:String) : Int
         // { return untyped __cpp__("glGetDebugMessageLogARB({0}, {1}, {2}, {3}, (GLuint*)&({4}[0]), {5}, (GLsizei*)&({6}[0]), {7})", count, bufSize, sources, types, ids, severities, lengths, messageLog); }
 
@@ -5055,13 +5062,13 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetNamedBufferPointerv')
         // static function glGetNamedBufferPointerv(buffer:Int, pname:Int, params:void**) : Void;
-            
+
         // @:native('glMapNamedBuffer')
         // static function glMapNamedBuffer(buffer:Int, access:Int) : void *;
-            
+
         // @:native('glMapNamedBufferRange')
         // static function glMapNamedBufferRange(buffer:Int, offset:Int, length:Int, access:Int) : void *;
 
@@ -5526,7 +5533,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetProgramBinary(program:Int, bufSize:Int, length:Array<Int>, binaryFormat:GLenum*, void*binary:) : Void
         // { untyped __cpp__("glGetProgramBinary({0}, {1}, (GLsizei*)&({2}[0]), {3}, {4})", program, bufSize, length, binaryFormat, void*binary); }
 
@@ -6098,7 +6105,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glMapBufferRange')
         // static function glMapBufferRange(target:Int, offset:Int, length:Int, access:Int) : void *;
 
@@ -7318,16 +7325,16 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetActiveUniformARB(programObj:UInt, index:Int, maxLength:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:GLcharARB*) : Void
         // { untyped __cpp__("glGetActiveUniformARB({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLint*)&({4}[0]), {5}, {6})", programObj, index, maxLength, length, size, type, name); }
-            
+
         // inline static function glGetAttachedObjectsARB(containerObj:UInt, maxCount:Int, count:Array<Int>, obj:GLhandleARB*) : Void
         // { untyped __cpp__("glGetAttachedObjectsARB({0}, {1}, (GLsizei*)&({2}[0]), {3})", containerObj, maxCount, count, obj); }
-            
+
         // inline static function glGetInfoLogARB(obj:UInt, maxLength:Int, length:Array<Int>, infoLog:GLcharARB*) : Void
         // { untyped __cpp__("glGetInfoLogARB({0}, {1}, (GLsizei*)&({2}[0]), {3})", obj, maxLength, length, infoLog); }
-            
+
         // inline static function glGetShaderSourceARB(obj:UInt, maxLength:Int, length:Array<Int>, source:GLcharARB*) : Void
         // { untyped __cpp__("glGetShaderSourceARB({0}, {1}, (GLsizei*)&({2}[0]), {3})", obj, maxLength, length, source); }
 
@@ -8720,10 +8727,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetBufferPointervARB')
         // static function glGetBufferPointervARB(target:Int, pname:Int, params:void**) : Void;
-            
+
         // @:native('glMapBufferARB')
         // static function glMapBufferARB(target:Int, access:Int) : void *;
 
@@ -9006,7 +9013,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetVertexAttribPointervARB')
         // static function glGetVertexAttribPointervARB(index:Int, pname:Int, pointer:void**) : Void;
 
@@ -9040,7 +9047,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetActiveAttribARB(programObj:UInt, index:Int, maxLength:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:GLcharARB*) : Void
         // { untyped __cpp__("glGetActiveAttribARB({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLint*)&({4}[0]), {5}, {6})", programObj, index, maxLength, length, size, type, name); }
 
@@ -9565,7 +9572,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glMapObjectBufferATI')
         // static function glMapObjectBufferATI(buffer:Int) : void *;
 
@@ -11048,25 +11055,25 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetNamedBufferPointervEXT')
         // static function glGetNamedBufferPointervEXT(buffer:Int, pname:Int, params:void**) : Void;
-            
+
         // @:native('glGetPointerIndexedvEXT')
         // static function glGetPointerIndexedvEXT(target:Int, index:Int, params:void**) : Void;
-            
+
         // @:native('glGetPointeri_vEXT')
         // static function glGetPointeri_vEXT(pname:Int, index:Int, params:void**) : Void;
-            
+
         // @:native('glGetVertexArrayPointeri_vEXT')
         // static function glGetVertexArrayPointeri_vEXT(vaobj:Int, index:Int, pname:Int, param:void**) : Void;
-            
+
         // @:native('glGetVertexArrayPointervEXT')
         // static function glGetVertexArrayPointervEXT(vaobj:Int, pname:Int, param:void**) : Void;
-            
+
         // @:native('glMapNamedBufferEXT')
         // static function glMapNamedBufferEXT(buffer:Int, access:Int) : void *;
-            
+
         // @:native('glMapNamedBufferRangeEXT')
         // static function glMapNamedBufferRangeEXT(buffer:Int, offset:Int, length:Int, access:Int) : void *;
 
@@ -13006,10 +13013,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetTransformFeedbackVaryingEXT(program:Int, index:Int, bufSize:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:String) : Void
         // { untyped __cpp__("glGetTransformFeedbackVaryingEXT({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLsizei*)&({4}[0]), {5}, {6})", program, index, bufSize, length, size, type, name); }
-            
+
         // @:native('glTransformFeedbackVaryingsEXT')
         // static function glTransformFeedbackVaryingsEXT(program:Int, count:Int, varyings:const GLchar * const*, bufferMode:Int) : Void;
 
@@ -13402,7 +13409,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetVariantPointervEXT(id:Int, value:Int, *data:BytesData) : Void
         // { untyped __cpp__("glGetVariantPointervEXT({0}, {1}, (void*)&({2}[0]))", id, value, *data); }
 
@@ -13639,28 +13646,28 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glColorPointerListIBM')
         // static function glColorPointerListIBM(size:Int, type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glEdgeFlagPointerListIBM')
         // static function glEdgeFlagPointerListIBM(stride:Int, pointer:const GLboolean **, ptrstride:Int) : Void;
-            
+
         // @:native('glFogCoordPointerListIBM')
         // static function glFogCoordPointerListIBM(type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glIndexPointerListIBM')
         // static function glIndexPointerListIBM(type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glNormalPointerListIBM')
         // static function glNormalPointerListIBM(type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glSecondaryColorPointerListIBM')
         // static function glSecondaryColorPointerListIBM(size:Int, type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glTexCoordPointerListIBM')
         // static function glTexCoordPointerListIBM(size:Int, type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
-            
+
         // @:native('glVertexPointerListIBM')
         // static function glVertexPointerListIBM(size:Int, type:Int, stride:Int, pointer:const void**, ptrstride:Int) : Void;
 
@@ -13721,7 +13728,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glMapTexture2DINTEL(texture:Int, level:Int, access:Int, stride:Array<Int>, layout:GLenum*) : void *
         // { return untyped __cpp__("glMapTexture2DINTEL({0}, {1}, {2}, (GLint*)&({3}[0]), {4})", texture, level, access, stride, layout); }
 
@@ -13747,16 +13754,16 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glColorPointervINTEL')
         // static function glColorPointervINTEL(size:Int, type:Int, pointer:const void**) : Void;
-            
+
         // @:native('glNormalPointervINTEL')
         // static function glNormalPointervINTEL(type:Int, pointer:const void**) : Void;
-            
+
         // @:native('glTexCoordPointervINTEL')
         // static function glTexCoordPointervINTEL(size:Int, type:Int, pointer:const void**) : Void;
-            
+
         // @:native('glVertexPointervINTEL')
         // static function glVertexPointervINTEL(size:Int, type:Int, pointer:const void**) : Void;
 
@@ -13975,10 +13982,10 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glDebugMessageCallback(callback:GLDEBUGPROC, userParam:BytesData) : Void
         // { untyped __cpp__("glDebugMessageCallback({0}, (const void*)&({1}[0]))", callback, userParam); }
-            
+
         // inline static function glGetDebugMessageLog(count:Int, bufSize:Int, sources:GLenum*, types:GLenum*, ids:Array<Int>, severities:GLenum*, lengths:Array<Int>, messageLog:String) : Int
         // { return untyped __cpp__("glGetDebugMessageLog({0}, {1}, {2}, {3}, (GLuint*)&({4}[0]), {5}, (GLsizei*)&({6}[0]), {7})", count, bufSize, sources, types, ids, severities, lengths, messageLog); }
 
@@ -15812,16 +15819,16 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glPathCommandsNV(path:Int, numCommands:Int, commands:Array<cpp.UInt8>, numCoords:Int, coordType:Int, void*coords:const) : Void
         // { untyped __cpp__("glPathCommandsNV({0}, {1}, (const GLubyte*)&({2}[0]), {3}, {4}, {5})", path, numCommands, commands, numCoords, coordType, void*coords); }
-            
+
         // inline static function glPathGlyphsNV(firstPathName:Int, fontTarget:Int, fontName:BytesData, fontStyle:Int, numGlyphs:Int, type:Int, void*charcodes:const, handleMissingGlyphs:Int, pathParameterTemplate:Int, emScale:cpp.Float32) : Void
         // { untyped __cpp__("glPathGlyphsNV({0}, {1}, (const void*)&({2}[0]), {3}, {4}, {5}, {6}, {7}, {8}, {9})", firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, void*charcodes, handleMissingGlyphs, pathParameterTemplate, emScale); }
-            
+
         // inline static function glPathSubCommandsNV(path:Int, commandStart:Int, commandsToDelete:Int, numCommands:Int, commands:Array<cpp.UInt8>, numCoords:Int, coordType:Int, void*coords:const) : Void
         // { untyped __cpp__("glPathSubCommandsNV({0}, {1}, {2}, {3}, (const GLubyte*)&({4}[0]), {5}, {6}, {7})", path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, void*coords); }
-            
+
         // @:native('glWeightPathsNV')
         // static function glWeightPathsNV(resultPath:Int, numPaths:Int, paths:Array<const GLuint>, weights:Array<cpp.Float32>) : Void;
 
@@ -16522,7 +16529,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glGetActiveVaryingNV(program:Int, index:Int, bufSize:Int, length:Array<Int>, size:Array<Int>, type:GLenum*, name:String) : Void
         // { untyped __cpp__("glGetActiveVaryingNV({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLsizei*)&({4}[0]), {5}, {6})", program, index, bufSize, length, size, type, name); }
 
@@ -16600,31 +16607,31 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // inline static function glVDPAUGetSurfaceivNV(surface:GLvdpauSurfaceNV, pname:Int, bufSize:Int, length:Array<Int>, values:Array<Int>) : Void
         // { untyped __cpp__("glVDPAUGetSurfaceivNV({0}, {1}, {2}, (GLsizei*)&({3}[0]), (GLint*)&({4}[0]))", surface, pname, bufSize, length, values); }
-            
+
         // inline static function glVDPAUInitNV(vdpDevice:BytesData, void*getProcAddress:const) : Void
         // { untyped __cpp__("glVDPAUInitNV((const void*)&({0}[0]), {1})", vdpDevice, void*getProcAddress); }
-            
+
         // @:native('glVDPAUIsSurfaceNV')
         // static function glVDPAUIsSurfaceNV(surface:GLvdpauSurfaceNV) : Void;
-            
+
         // @:native('glVDPAUMapSurfacesNV')
         // static function glVDPAUMapSurfacesNV(numSurfaces:Int, surfaces:const GLvdpauSurfaceNV*) : Void;
-            
+
         // inline static function glVDPAURegisterOutputSurfaceNV(vdpSurface:BytesData, target:Int, numTextureNames:Int, textureNames:Array<Int>) : GLvdpauSurfaceNV
         // { return untyped __cpp__("glVDPAURegisterOutputSurfaceNV((const void*)&({0}[0]), {1}, {2}, (const GLuint*)&({3}[0]))", vdpSurface, target, numTextureNames, textureNames); }
-            
+
         // inline static function glVDPAURegisterVideoSurfaceNV(vdpSurface:BytesData, target:Int, numTextureNames:Int, textureNames:Array<Int>) : GLvdpauSurfaceNV
         // { return untyped __cpp__("glVDPAURegisterVideoSurfaceNV((const void*)&({0}[0]), {1}, {2}, (const GLuint*)&({3}[0]))", vdpSurface, target, numTextureNames, textureNames); }
-            
+
         // @:native('glVDPAUSurfaceAccessNV')
         // static function glVDPAUSurfaceAccessNV(surface:GLvdpauSurfaceNV, access:Int) : Void;
-            
+
         // @:native('glVDPAUUnmapSurfacesNV')
         // static function glVDPAUUnmapSurfacesNV(numSurface:Int, surfaces:const GLvdpauSurfaceNV*) : Void;
-            
+
         // @:native('glVDPAUUnregisterSurfaceNV')
         // static function glVDPAUUnregisterSurfaceNV(surface:GLvdpauSurfaceNV) : Void;
 
@@ -17099,7 +17106,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetVertexAttribPointervNV')
         // static function glGetVertexAttribPointervNV(index:Int, pname:Int, pointer:void**) : Void;
 
@@ -17652,7 +17659,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glLogMessageCallbackREGAL')
         // static function glLogMessageCallbackREGAL(callback:GLLOGPROCREGAL) : Void;
 
@@ -17673,7 +17680,7 @@ extern class GL {
 
     // TODO functions
 
-            
+
         // @:native('glGetProcAddressREGAL')
         // static function glGetProcAddressREGAL(name:String) : void *;
 
