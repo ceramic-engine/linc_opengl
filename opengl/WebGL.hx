@@ -26,22 +26,22 @@ extern class WebGL {
 
 //WebGL spec GL externs
 
-    inline static function activeTexture(texture:GLenum):Void 
+    inline static function activeTexture(texture:GLenum):Void
         GL.glActiveTexture(texture);
 
-    inline static function attachShader(program:GLProgram, shader:GLShader):Void 
+    inline static function attachShader(program:GLProgram, shader:GLShader):Void
         GL.glAttachShader(program, shader);
 
     inline static function bindAttribLocation(program:GLProgram, index:GLuint, name:String):Void
         GL.glBindAttribLocation(program, index, name);
 
-    inline static function bindBuffer(target:GLenum, buffer:GLBuffer):Void 
+    inline static function bindBuffer(target:GLenum, buffer:GLBuffer):Void
         GL.glBindBuffer(target, buffer);
 
-    inline static function bindFramebuffer(target:GLenum, framebuffer:GLFramebuffer):Void 
+    inline static function bindFramebuffer(target:GLenum, framebuffer:GLFramebuffer):Void
         GL.glBindFramebuffer(target, framebuffer);
 
-    inline static function bindRenderbuffer(target:GLenum, renderbuffer:GLRenderbuffer):Void 
+    inline static function bindRenderbuffer(target:GLenum, renderbuffer:GLRenderbuffer):Void
         GL.glBindRenderbuffer(target, renderbuffer);
 
     inline static function bindTexture(target:GLenum, texture:GLTexture):Void
@@ -52,7 +52,7 @@ extern class WebGL {
 
     inline static function blendEquation(mode:GLenum):Void
         GL.glBlendEquation(mode);
-    
+
     inline static function blendEquationSeparate(modeRGB:GLenum, modeAlpha:GLenum):Void
         GL.glBlendEquationSeparate(modeRGB, modeAlpha);
 
@@ -96,7 +96,7 @@ extern class WebGL {
     inline static function createBuffer():GLBuffer {
         var _id:Int = _createBuffer(); return _id;
     }
-    
+
     inline static function createFramebuffer():GLFramebuffer {
         var _id:Int = _createFramebuffer(); return _id;
     }
@@ -104,40 +104,40 @@ extern class WebGL {
     inline static function createProgram():GLProgram {
         var _id:Int = GL.glCreateProgram(); return _id;
     }
-    
+
     inline static function createRenderbuffer():GLRenderbuffer {
         var _id:Int = _createRenderbuffer(); return _id;
     }
 
     inline static function createShader(type:GLenum):GLShader {
-        var _id:Int = GL.glCreateShader(type); 
+        var _id:Int = GL.glCreateShader(type);
         return _id;
     }
-    
+
     inline static function createTexture():GLTexture {
-        var _id:Int = _createTexture(); 
+        var _id:Int = _createTexture();
         return _id;
     }
 
     inline static function cullFace(mode:GLenum):Void
         GL.glCullFace(mode);
 
-    inline static function deleteBuffer(buffer:GLBuffer):Void 
+    inline static function deleteBuffer(buffer:GLBuffer):Void
         _deleteBuffer(buffer);
 
-    inline static function deleteFramebuffer(framebuffer:GLFramebuffer):Void 
+    inline static function deleteFramebuffer(framebuffer:GLFramebuffer):Void
         _deleteFramebuffer(framebuffer);
 
-    inline static function deleteProgram(program:GLProgram):Void 
+    inline static function deleteProgram(program:GLProgram):Void
         GL.glDeleteProgram(program);
 
-    inline static function deleteRenderbuffer(renderbuffer:GLRenderbuffer):Void 
+    inline static function deleteRenderbuffer(renderbuffer:GLRenderbuffer):Void
         _deleteRenderbuffer(renderbuffer);
 
     inline static function deleteShader(shader:GLShader):Void
         GL.glDeleteShader(shader);
-    
-    inline static function deleteTexture(texture:GLTexture):Void 
+
+    inline static function deleteTexture(texture:GLTexture):Void
         _deleteTexture(texture);
 
     inline static function depthFunc(func:GLenum):Void
@@ -217,7 +217,7 @@ extern class WebGL {
     inline static function getError():GLenum
         return GL.glGetError();
 
-    // @:native('glGetExtension') 
+    // @:native('glGetExtension')
     //:todo: returns `object?` with defines and functions attached,
     //       however, there are no real extensions that make sense from WebGL on desktop without wrapping them completely
     //       which is plausible, but for immediate term, just making the function unavailable is best
@@ -231,25 +231,25 @@ extern class WebGL {
     @:native('linc::opengl::webgl::getParameter')
     static function getParameter(pname:GLenum):Any;
 
-    inline static function getProgramInfoLog(program:GLProgram):String 
+    inline static function getProgramInfoLog(program:GLProgram):String
         return _getProgramInfoLog(program);
 
-    inline static function getProgramParameter(program:GLProgram, pname:GLenum):Int 
+    inline static function getProgramParameter(program:GLProgram, pname:GLenum):Int
         return _getProgramParameter(program, pname);
 
     @:native('linc::opengl::webgl::getRenderbufferParameter')
     static function getRenderbufferParameter(target:GLenum, pname:GLenum):Int;
 
-    inline static function getShaderInfoLog(shader:GLShader):String 
+    inline static function getShaderInfoLog(shader:GLShader):String
         return _getShaderInfoLog(shader);
 
-    inline static function getShaderParameter(shader:GLShader, pname:GLenum):Int 
+    inline static function getShaderParameter(shader:GLShader, pname:GLenum):Int
         return _getShaderParameter(shader, pname);
 
     // @:native('glGetShaderPrecisionFormat') //:todo: Requires wrapping if possible
     // static function getShaderPrecisionFormat(shadertype:Int, precisiontype:Int) : GLShaderPrecisionFormat;
 
-    inline static function getShaderSource(shader:GLShader):String 
+    inline static function getShaderSource(shader:GLShader):String
         return _getShaderSource(shader);
 
     @:native('linc::opengl::webgl::getSupportedExtensions')
@@ -309,13 +309,24 @@ extern class WebGL {
     inline static function renderbufferStorage(target:GLenum, internalformat:GLenum, width:Int, height:Int):Void
         GL.glRenderbufferStorage(target, internalformat, width, height);
 
+    inline static function renderbufferStorageMultisample(target:GLenum, samples:Int, internalformat:GLenum, width:Int, height:Int):Void
+        GL.glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
+
+    inline static function clearBufferfv(buffer:Int, drawBuffer:Int, value:Float32Array):Void {
+        force_include;
+        untyped __cpp__('glClearBufferfv({0}, {1}, (GLfloat*)(&{2}->buffer[0] + {2}->byteOffset))', buffer, drawBuffer, value);
+    }
+
+    inline static function blitFramebuffer(srcX0:Int, srcY0:Int, srcX1:Int, srcY1:Int, dstX0:Int, dstY0:Int, dstX1:Int, dstY1:Int, mask:Int, filter:Int):Void
+        GL.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+
     inline static function sampleCoverage(value:Float, invert:Bool):Void
         GL.glSampleCoverage(value, invert);
 
     inline static function scissor(x:Int, y:Int, width:Int, height:Int):Void
         GL.glScissor(x, y, width, height);
 
-    inline static function shaderSource(shader:GLShader, source:String):Void 
+    inline static function shaderSource(shader:GLShader, source:String):Void
         _shaderSource(shader, source);
 
     inline static function stencilFunc(func:GLenum, ref:Int, mask:GLuint):Void
@@ -939,7 +950,7 @@ extern class WebGL {
     static inline var BROWSER_DEFAULT_WEBGL              = 0x9244;
 
 //Internal wrappers
-// note that these inline wrappers are needed for ideal Int cast to native side 
+// note that these inline wrappers are needed for ideal Int cast to native side
 // i.e instead of Dynamic on c++ side, with (int) cast, let the haxe abstract type pass the int directly
 
     @:native('linc::opengl::webgl::createBuffer')        private static function _createBuffer():Int;
@@ -948,7 +959,7 @@ extern class WebGL {
     @:native('linc::opengl::webgl::createTexture')       private static function _createTexture():Int;
     @:native('linc::opengl::webgl::deleteBuffer')        private static function _deleteBuffer(buffer:Int):Void;
     @:native('linc::opengl::webgl::deleteFramebuffer')   private static function _deleteFramebuffer(framebuffer:Int):Void;
-    @:native('linc::opengl::webgl::deleteRenderbuffer')  private static function _deleteRenderbuffer(renderbuffer:Int):Void;    
+    @:native('linc::opengl::webgl::deleteRenderbuffer')  private static function _deleteRenderbuffer(renderbuffer:Int):Void;
     @:native('linc::opengl::webgl::deleteTexture')       private static function _deleteTexture(texture:Int):Void;
     @:native('linc::opengl::webgl::getProgramInfoLog')   private static function _getProgramInfoLog(program:Int):String;
     @:native('linc::opengl::webgl::getProgramParameter') private static function _getProgramParameter(program:Int, pname:GLenum):Int;
