@@ -5,7 +5,10 @@
 #endif
 #include <haxe/io/Bytes.h>
 
-#if LINC_OPENGL_GLES2 && !LINC_OPENGL_GLES3 && defined(HX_ANDROID)
+#if LINC_OPENGL_ANGLE
+    #include <EGL/egl.h>
+    #include <GLES3/gl3.h>
+#elif LINC_OPENGL_GLES2 && !LINC_OPENGL_GLES3 && defined(HX_ANDROID)
     #include <GLES2/gl2.h>
     #include <GLES2/gl2ext.h>
 #elif LINC_OPENGL_GLES2 && !LINC_OPENGL_GLES3 && (defined(IPHONE) || defined(__IPHONEOS__) || defined(APPLETVOS) || defined(APPLETVSIM))

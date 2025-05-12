@@ -12,10 +12,10 @@ import snow.api.buffers.Int32Array;
 
 import opengl.GL;
 
-typedef GLenum = Int
-typedef GLuint = Int
-typedef GLbitfield = Int
-typedef Any = Dynamic
+typedef GLenum = Int;
+typedef GLuint = Int;
+typedef GLbitfield = Int;
+typedef Any = Dynamic;
 
 @:keep
 @:include('linc_opengl.h')
