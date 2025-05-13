@@ -26,6 +26,10 @@
             <compilerflag value="-DLINC_OPENGL_ANGLE" />
             <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-mac-universal/include/" if="mac" />
             <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-ios-universal/include/" if="ios" />
+            <section if="windows">
+                <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-windows-x64/include/" unless="HXCPP_ARM64" />
+                <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-windows-arm64/include/" if="HXCPP_ARM64" />
+            </section>
         </section>
     </files>
 
@@ -48,6 +52,10 @@
             <compilerflag value="-DLINC_OPENGL_ANGLE" />
             <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-mac-universal/include/" if="mac" />
             <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-ios-universal/include/" if="ios" />
+            <section if="windows">
+                <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-windows-x64/include/" unless="HXCPP_ARM64" />
+                <compilerflag value="-I${LINC_OPENGL_PATH}../../bin/angle/angle-windows-arm64/include/" if="HXCPP_ARM64" />
+            </section>
         </section>
     </files>
 
@@ -55,8 +63,18 @@
 
         <files id="linc_opengl" />
 
-        <section if="windows" unless="gles_angle">
-            <lib name="opengl32.lib" />
+        <section if="windows">
+            <section unless="gles_angle">
+                <lib name="opengl32.lib" />
+            </section>
+
+            <section if="gles_angle">
+                <lib name="${LINC_OPENGL_PATH}../../bin/angle/angle-windows-x64/lib/libEGL.lib" unless="HXCPP_ARM64" />
+                <lib name="${LINC_OPENGL_PATH}../../bin/angle/angle-windows-x64/lib/libGLESv2.lib" unless="HXCPP_ARM64" />
+
+                <lib name="${LINC_OPENGL_PATH}../../bin/angle/angle-windows-arm64/lib/libEGL.lib" if="HXCPP_ARM64" />
+                <lib name="${LINC_OPENGL_PATH}../../bin/angle/angle-windows-arm64/lib/libGLESv2.lib" if="HXCPP_ARM64" />
+            </section>
         </section>
 
         <section if="linux">
