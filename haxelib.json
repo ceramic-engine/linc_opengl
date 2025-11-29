@@ -1,0 +1,11 @@
+{
+  "name": "linc_opengl",
+  "url": "https://github.com/ceramic-engine/linc_opengl",
+  "license": "MIT",
+  "tags": ["linc", "cpp", "native", "opengl", "glew", "webgl"],
+  "description": "Haxe native bindings for OpenGL, GLEW and WebGL",
+  "version": "1.0.0",
+  "releasenote": "",
+  "contributors": ["underscorediscovery", "jeremyfa"],
+  "dependencies": {}
+}
