@@ -97,6 +97,24 @@ extern class WebGL {
         var _id:Int = _createBuffer(); return _id;
     }
 
+    // Vertex Array Objects (GL 3.x / GLES3 core)
+    inline static function createVertexArray():GLVertexArray {
+        var _ids:Array<Int> = [0];
+        GL.glGenVertexArrays(1, _ids);
+        return _ids[0];
+    }
+
+    inline static function bindVertexArray(vao:GLVertexArray):Void
+        GL.glBindVertexArray(vao);
+
+    inline static function unbindVertexArray():Void
+        GL.glBindVertexArray(0);
+
+    inline static function deleteVertexArray(vao:GLVertexArray):Void {
+        var _ids:Array<Int> = [vao];
+        GL.glDeleteVertexArrays(1, _ids);
+    }
+
     inline static function createFramebuffer():GLFramebuffer {
         var _id:Int = _createFramebuffer(); return _id;
     }
@@ -165,6 +183,21 @@ extern class WebGL {
         force_include;
         untyped __cpp__('glDrawElements({0}, {1}, {2}, (void*)(intptr_t){3})', mode, count, type, offset);
     }
+
+    // Instanced rendering (GL 3.3+/GLES3 core)
+    inline static function vertexAttribDivisor(index:Int, divisor:Int):Void {
+        force_include;
+        untyped __cpp__('glVertexAttribDivisor({0}, {1})', index, divisor);
+    }
+
+    inline static function drawElementsInstanced(mode:GLenum, count:Int, type:GLenum, offset:Int, instanceCount:Int):Void {
+        force_include;
+        untyped __cpp__('glDrawElementsInstanced({0}, {1}, {2}, (void*)(intptr_t){3}, {4})', mode, count, type, offset, instanceCount);
+    }
+
+    // Draw buffer selection (GL 2.0+ core) (depth-only passes)
+    inline static function drawBuffers(buffers:Array<Int>):Void
+        GL.glDrawBuffers(buffers.length, buffers);
 
     inline static function enable(cap:GLenum):Void
         GL.glEnable(cap);
@@ -815,6 +848,13 @@ extern class WebGL {
     static inline var TEXTURE_CUBE_MAP_NEGATIVE_Z        = 0x851A;
     static inline var MAX_CUBE_MAP_TEXTURE_SIZE          = 0x851C;
 
+    /* Float texture formats + mip control (GL3/GLES3 core) */
+    static inline var HALF_FLOAT                         = 0x140B;
+    static inline var RGBA16F                            = 0x881A;
+    static inline var RGB16F                             = 0x881B;
+    static inline var TEXTURE_MAX_LEVEL                  = 0x813D;
+    static inline var DEPTH_COMPONENT24                  = 0x81A6;
+
     /* TextureUnit */
     static inline var TEXTURE0                           = 0x84C0;
     static inline var TEXTURE1                           = 0x84C1;
@@ -1044,6 +1084,15 @@ abstract GLObject(Int) {
     @:to inline public function toDynamic() : Dynamic return this.id;
     @:from inline static public function fromDynamic(_id:Dynamic) return new GLFramebuffer(_id);
     inline function toString() : String return 'GLFramebuffer(${this.id})';
+}
+
+@:forward abstract GLVertexArray(GLObject) {
+    inline public function new(_id:Int) this = new GLObject(_id);
+    @:to inline public function toInt() : Int return this.id;
+    @:from inline static public function fromInt(_id:Int) return new GLVertexArray(_id);
+    @:to inline public function toDynamic() : Dynamic return this.id;
+    @:from inline static public function fromDynamic(_id:Dynamic) return new GLVertexArray(_id);
+    inline function toString() : String return 'GLVertexArray(${this.id})';
 }
 
 @:forward abstract GLProgram(GLObject) {
