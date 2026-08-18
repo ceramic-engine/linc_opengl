@@ -176,7 +176,9 @@ namespace linc {
                     case GL_STENCIL_WRITEMASK:
                     case GL_SUBPIXEL_BITS:
                     case GL_UNPACK_ALIGNMENT:
+                    case 0x8D57: // GL_MAX_SAMPLES (GLES3/GL3+, numeric literal: absent from GLES2 headers)
                         int val;
+                        val = 0;
                         glGetIntegerv(param,&val);
                         return val;
                     break;
